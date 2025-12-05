@@ -26,10 +26,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Sanity check: list files so you can see what's being uploaded
+      - name: List files
+        run: ls -la
+
       - name: Upload files for Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .   # Use . if no build folder
+          path: .  # <-- important: use . (not ./dist)
 
       - name: Deploy to Pages
         id: deploy
