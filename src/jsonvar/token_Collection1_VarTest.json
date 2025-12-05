@@ -1,0 +1,46 @@
+{
+  "Colours": {
+    "PrimaryColour": {
+      "$type": "color",
+      "$value": "#4ce7d5"
+    },
+    "SecondaryColour": {
+      "$type": "color",
+      "$value": "#2f2f2f"
+    },
+    "TertiaryColour": {
+      "$type": "color",
+      "$value": "#75f386"
+    }
+  },
+  "Font": {
+    "Family": {
+      "body": {
+        "$type": "string",
+        "$value": "Montserrat"
+      },
+      "heading": {
+        "$type": "string",
+        "$value": "Montserrat"
+      }
+    },
+    "H1": {
+      "$type": "number",
+      "$value": 32
+    },
+    "Weight": {
+      "Bold": {
+        "$type": "string",
+        "$value": "Medium"
+      },
+      "Regular": {
+        "$type": "string",
+        "$value": "Regular"
+      }
+    },
+    "body": {
+      "$type": "number",
+      "$value": 16
+    }
+  }
+}
