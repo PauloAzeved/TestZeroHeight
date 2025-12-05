@@ -26,14 +26,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Sanity check: list files so you can see what's being uploaded
-      - name: List files
-        run: ls -la
+      # Sanity check to confirm the folder exists in the runner
+      - name: Show repo tree
+        run: |
+          pwd
+          ls -la
+          ls -la pages || true
 
       - name: Upload files for Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .  # <-- important: use . (not ./dist)
+          path: ./pages    # <-- IMPORTANT: your site root
 
       - name: Deploy to Pages
         id: deploy
