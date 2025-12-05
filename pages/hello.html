@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hello — TestZeroHeight</title>
+
+  <!-- Link to your existing CSS tokens file -->
+  <link rel="stylesheet" href="../src/css/token_Collection1_VarTest.css">
+
+  <style>
+    /* Small local styles that use the CSS variables from token_Collection1_VarTest.css */
+    :root {
+      /* fallback values in case the token file isn't loaded */
+      --fallback-heading-font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --fallback-body-font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --fallback-primary: #4ce7d5;
+      --fallback-secondary: #2f2f2f;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 2rem;
+      box-sizing: border-box;
+      font-family: var(--content-font-family-body, var(--fallback-body-font));
+      color: var(--color-colours-secondary-colour, var(--fallback-secondary));
+      background: #ffffff;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .title {
+      /* use the heading font defined in your tokens file */
+      font-family: var(--content-font-family-heading, var(--fallback-heading-font));
+      /* use a sensible fallback font-weight; token file contains "Medium" as a name, so fallback to 600 */
+      font-weight: 600;
+      font-size: 2rem;
+      margin: 0;
+      color: var(--color-colours-secondary-colour, var(--fallback-secondary));
+    }
+
+    .body-text {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0;
+      color: var(--color-colours-secondary-colour, var(--fallback-secondary));
+    }
+
+    .cta {
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      color: #ffffff;
+      background-color: var(--color-colours-primary-colour, var(--fallback-primary));
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .cta:focus,
+    .cta:hover {
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main" aria-labelledby="page-title">
+    <h1 id="page-title" class="title">Hello, world!</h1>
+
+    <p class="body-text">
+      This is a basic page demonstrating usage of the CSS token file. The title uses the heading font token and the CTA button uses the primary color token for its background.
+    </p>
+
+    <a class="cta" href="#" role="button">Get started</a>
+  </main>
+</body>
+</html>
