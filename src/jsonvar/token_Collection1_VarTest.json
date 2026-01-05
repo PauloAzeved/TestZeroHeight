@@ -14,7 +14,7 @@
     },
     "White": {
       "$type": "color",
-      "$value": "#ffffff"
+      "$value": "#e6e6e6"
     }
   },
   "Font": {
