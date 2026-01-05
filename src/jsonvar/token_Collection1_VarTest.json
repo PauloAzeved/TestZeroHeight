@@ -11,6 +11,10 @@
     "TertiaryColour": {
       "$type": "color",
       "$value": "#75f386"
+    },
+    "White": {
+      "$type": "color",
+      "$value": "#ffffff"
     }
   },
   "Font": {
