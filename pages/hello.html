@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,17 +12,23 @@
   <!-- Load Montserrat from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Link to your existing CSS tokens file -->
-  <link rel="stylesheet" href="../src/css/token_Collection1_VarTest.css">
+  <!-- Link to your Zeroheight Style Dictionary CSS export (public URL) -->
+  <link rel="stylesheet" href="https://cfc.zeroheight.com/api/token_management/token_set/15825/export?format=style-dictionary&collection_id=58299&mode_id=98289&collection_name=collection_1&mode_name=vartest">
 
+  <!-- Component styles that consume the exported tokens -->
   <style>
-    /* Small local styles that use the CSS variables from token_Collection1_VarTest.css */
+    /* Fallbacks in case a token is missing */
     :root {
-      /* fallback values in case the token file isn't loaded */
       --fallback-heading-font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       --fallback-body-font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      --fallback-primary: #4ce7d5;
+      --fallback-primary: #0083bd;
       --fallback-secondary: #2f2f2f;
+      --fallback-white: #ffffff;
+      --fallback-border-width: 1px;
+      --fallback-radius: 6px;
+      --fallback-space-md: 16px;
+      --fallback-space-sm: 8px;
+      --fallback-space-xs: 4px;
     }
 
     html, body {
@@ -44,10 +51,8 @@
     }
 
     .title {
-      /* use the heading font defined in your tokens file */
       font-family: var(--content-font-family-heading, var(--fallback-heading-font));
-      /* use a sensible fallback font-weight; token file contains "Medium" as a name, so fallback to 600 */
-      font-weight: 600;
+      font-weight: 600; /* If your token exports string weights, keep numeric fallback */
       font-size: 2rem;
       margin: 0;
       color: var(--color-colours-secondary-colour, var(--fallback-secondary));
@@ -65,18 +70,64 @@
       display: inline-block;
       padding: 0.75rem 1.25rem;
       font-size: 1rem;
-      color: var(--color-colours-white, #ffffff);
+      color: var(--color-colours-white, var(--fallback-white));
       background-color: var(--color-colours-primary-colour, var(--fallback-primary));
       border: none;
-      border-radius: 6px;
+      border-radius: var(--corner-radius, var(--fallback-radius));
       cursor: pointer;
       text-decoration: none;
     }
-
     .cta:focus,
     .cta:hover {
       opacity: 0.95;
     }
+
+    /* === Box component (card) using your tokens === */
+    .card {
+      background: var(--color-colours-white, var(--fallback-white));
+      color: var(--color-colours-secondary-colour, var(--fallback-secondary));
+      /* If your export provides --border-stroke-def as a number, browsers need units.
+         Many Style Dictionary CSS exports will already include 'px'.
+         We add a px fallback just in case via var(..., 1px). */
+      border-width: var(--border-stroke-def, var(--fallback-border-width));
+      border-style: solid;
+      /* If you have a dedicated border color token, swap here; otherwise use secondary as a sensible default */
+      border-color: var(--color-colours-secondary-colour, var(--fallback-secondary));
+      border-radius: var(--corner-radius, var(--fallback-radius));
+      padding: var(--space-md, var(--fallback-space-md));
+      display: grid;
+      gap: var(--space-sm, var(--fallback-space-sm));
+    }
+
+    .card__title {
+      font-family: var(--content-font-family-heading, var(--fallback-heading-font));
+      font-weight: 600;
+      font-size: var(--content-font-size-h1, 32px);
+      margin: 0;
+    }
+
+    .card__text {
+      font-size: var(--content-font-size-body, 16px);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .card__cta {
+      justify-self: start;
+      display: inline-block;
+      padding: calc(var(--space-xs, var(--fallback-space-xs)) * 2)
+               calc(var(--space-sm, var(--fallback-space-sm)) * 2);
+      font-size: var(--content-font-size-body, 16px);
+      font-weight: 600;
+      color: #fff;
+      background-color: var(--color-colours-primary-colour, var(--fallback-primary));
+      border: none;
+      border-radius: var(--corner-radius, var(--fallback-radius));
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .card__cta:hover,
+    .card__cta:focus { opacity: 0.95; }
   </style>
 </head>
 <body>
@@ -84,10 +135,19 @@
     <h1 id="page-title" class="title">Hello, world!</h1>
 
     <p class="body-text">
-      This is a basic page demonstrating usage of the CSS token file. The title uses the heading font token and the CTA button uses the primary color token for its background.
+      This is a basic page demonstrating usage of the Zeroheight token CSS export. The title uses the heading font token and the CTA button uses the primary colour token.
     </p>
 
     <a class="cta" href="#" role="button">Get started</a>
+
+    <!-- === Box component instance === -->
+    <section class="card" aria-labelledby="card-title-1">
+      <h2 id="card-title-1" class="card__title">Component Title</h2>
+      <p class="card__text">
+        This is a reusable box component using tokens for spacing, border, corner radius, and colours. Edit the tokens in Figma and sync via Zeroheight to see changes reflected here.
+      </p>
+      #Call to Action</a>
+    </section>
   </main>
 </body>
 </html>
