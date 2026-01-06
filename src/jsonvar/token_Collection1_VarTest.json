@@ -1,4 +1,10 @@
 {
+  "Border": {
+    "stroke-def": {
+      "$type": "number",
+      "$value": 1
+    }
+  },
   "Colours": {
     "PrimaryColour": {
       "$type": "color",
@@ -15,6 +21,12 @@
     "White": {
       "$type": "color",
       "$value": "#e6e6e6"
+    }
+  },
+  "Corner": {
+    "radius": {
+      "$type": "number",
+      "$value": 6
     }
   },
   "Font": {
@@ -45,6 +57,24 @@
     "body": {
       "$type": "number",
       "$value": 16
+    }
+  },
+  "Spacings": {
+    "space-lg": {
+      "$type": "number",
+      "$value": 24
+    },
+    "space-md": {
+      "$type": "number",
+      "$value": 16
+    },
+    "space-sm": {
+      "$type": "number",
+      "$value": 8
+    },
+    "space-xs": {
+      "$type": "number",
+      "$value": 4
     }
   }
 }
