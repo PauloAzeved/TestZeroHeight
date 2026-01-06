@@ -20,7 +20,7 @@
     },
     "White": {
       "$type": "color",
-      "$value": "#e6e6e6"
+      "$value": "#ffffff"
     }
   },
   "Corner": {
